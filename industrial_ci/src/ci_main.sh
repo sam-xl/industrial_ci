@@ -41,11 +41,15 @@ source "${ICI_SRC_PATH}/ros.sh"
 
 ici_setup
 
+ici_warn "All variables:"
+ici_cmd printenv
+
 export ISOLATION=${ISOLATION:-docker}
 if [ "${CI:-}" != true ] ; then
   if [ "${ISOLATION}" = "shell" ]; then
     ici_warn 'ISOLATION=shell needs CI=true, falling back to ISOLATION=docker'
   fi
+  ici_warn "ISOLATION is set to docker.."
   ISOLATION=docker
 fi
 ici_source_component ISOLATION isolation

@@ -64,6 +64,8 @@ function ici_forward_variable() {
 function ici_isolate() {
   local file=${1}; shift
 
+  ici_warn "Using docker isolation!"
+  
   if [ "${DOCKER_IMAGE-x}" = "" ]; then
       ici_error "Empty string passed to DOCKER_IMAGE. Specify a valid docker image or unset the environment variable to use the default image."
   fi
